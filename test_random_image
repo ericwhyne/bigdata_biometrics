@@ -1,0 +1,8 @@
+#!/bin/bash
+s3uri=`shuf -n 1 roxyimages.txt | awk '{print $4}'`
+s3cmd get $s3uri 
+filename=`echo $s3uri | sed 's/s3:\/.*\///'`
+./extract-faces $filename
+rm $filename
+mv *face*.jpg faces/
+
