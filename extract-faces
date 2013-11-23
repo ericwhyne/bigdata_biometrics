@@ -65,7 +65,7 @@ if faces:
       #croppedImage = pil_image.crop(cropBox)
       croppedImage.save(fname+'_face'+str(n)+ext)
       n+=1
-      print "Face found!"
+      #print "Face found!"
  
 #while (cv.WaitKey(15)==-1):
 #  cv.ShowImage("face detection test", cv_image)
