@@ -4,10 +4,11 @@ do
   echo "processing $line"
   echo $line >> done.txt
   s3uri=`echo $line | awk '{print $4}'`
-  s3cmd get $s3uri 
+  s3cmd get $s3uri 2> /dev/null | cat > /dev/null 
   filename=`echo $s3uri | sed 's/s3:\/.*\///'`
-  ./extract-faces $filename
-  rm $filename
-  mv *face*.jpg faces/
+  ./extract-faces $filename > /dev/null
+  rm $filename 2> /dev/null
+  mv *face*.jpg faces/ 2> /dev/null
+  sleep 5
 done
 
