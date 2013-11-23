@@ -1,7 +1,7 @@
 #!/bin/bash
 cat $1 | while read line
 do
-  echo "processing $line"
+  #echo "processing $line"
   echo $line >> done.txt
   s3uri=`echo $line | awk '{print $4}'`
   s3cmd get $s3uri 2> /dev/null | cat > /dev/null 
